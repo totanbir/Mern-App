@@ -11,8 +11,7 @@ class Home extends React.Component {
 				{
 					this.props.auth.isAuthenticated ?
 					<button className='btn btn-danger'
-					onClick={() => this.props.logout
-						(this.props.history)}
+					onClick={() => this.props.logout(this.props.history)}
 					> Logout </button> : 
 					<Link to='/login'><button className='btn btn-success'> Login </button></Link>
 				}

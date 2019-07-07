@@ -16,6 +16,7 @@ module.exports = {
 		}
 
 		User.findOne({ email })
+			// Use Populate for transaction
 			.then(user => {
 				if(!user) {
 					return resourceError(res, 'User Not Found')
@@ -31,7 +32,11 @@ module.exports = {
 					let token = jwt.sign({
 						_id: user._id,
 						name: user.name,
-						email: user.email
+						email: user.email,
+						amount: user.amount,
+						income: user.income,
+						expense: user.expense,
+						transactions: user.transactions
 					}, 'SECRET', {expiresIn: '2h'})
 
 					res.status(200).json({
